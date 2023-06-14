@@ -113,7 +113,9 @@ class PolarTab extends StatelessWidget {
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Container(
+                              AnimatedContainer(
+                                duration: duration,
+                                curve: curve,
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 8,
                                   vertical: 4,
@@ -129,7 +131,7 @@ class PolarTab extends StatelessWidget {
                                   style: TextStyle(
                                     color: activeIndex == index
                                         ? PolarTabColors.white
-                                        : PolarTabColors.black,
+                                        : PolarTabColors.white,
                                     fontSize: 10,
                                     fontWeight: FontWeight.w600,
                                   ),

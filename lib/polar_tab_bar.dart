@@ -49,10 +49,12 @@ class PolarTabBar extends StatefulWidget {
 
 class _PolarTabBarState extends State<PolarTabBar> {
   int _activeIndex = 0;
-  final PageController _pageController = PageController();
+  late PageController _pageController;
 
   @override
   Widget build(BuildContext context) {
+    _pageController = PageController(initialPage: _activeIndex);
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
