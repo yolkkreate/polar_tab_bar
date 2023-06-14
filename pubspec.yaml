@@ -1,7 +1,7 @@
 name: polar_tab_bar
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
+homepage: https://github.com/yolkkreate/polar_tab_bar.git
 
 environment:
   sdk: ">=3.0.3 <4.0.0"
