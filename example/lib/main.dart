@@ -4,6 +4,7 @@ import 'package:example/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:polar_tab_bar/models/polar_tab_item.dart';
 import 'package:polar_tab_bar/polar_tab_bar.dart';
+import 'package:polar_tab_bar/widgets/polar_tab_page.dart';
 
 void main() {
   runApp(const PolarTabBarApp());
@@ -18,17 +19,19 @@ class PolarTabBarApp extends StatelessWidget {
       PolarTabItem(
         index: 0,
         title: "Home",
-        page: const HomePage(),
+        page: const PolarTabPage(
+          child: HomePage(),
+        ),
       ),
       PolarTabItem(
         index: 1,
         title: "Category",
-        page: const CategoryPage(),
+        page: const PolarTabPage(child: CategoryPage()),
       ),
       PolarTabItem(
         index: 2,
         title: "Profile",
-        page: const ProfilePage(),
+        page: const PolarTabPage(child: ProfilePage()),
       ),
     ];
 
@@ -50,7 +53,6 @@ class PolarTabBarApp extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: PolarTabBar(
               tabs: tabs,
-              swipeable: false,
             ),
           ),
         ),

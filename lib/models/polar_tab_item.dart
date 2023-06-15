@@ -1,10 +1,10 @@
-import 'package:flutter/widgets.dart';
+import 'package:polar_tab_bar/widgets/polar_tab_page.dart';
 
 class PolarTabItem {
   final int index;
   final String? route;
   final String title;
-  final Widget page;
+  final PolarTabPage page;
 
   PolarTabItem({
     required this.index,
