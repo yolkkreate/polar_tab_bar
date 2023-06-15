@@ -50,6 +50,7 @@ class PolarTabBarApp extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: PolarTabBar(
               tabs: tabs,
+              swipeable: false,
             ),
           ),
         ),

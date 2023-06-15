@@ -24,6 +24,7 @@ class PolarTabBar extends StatefulWidget {
   final Curve curve;
   final Duration? duration;
   final PolarTabType type;
+  final bool swipeable;
 
   const PolarTabBar({
     super.key,
@@ -41,6 +42,7 @@ class PolarTabBar extends StatefulWidget {
     this.curve = Curves.easeInOut,
     this.duration,
     this.type = PolarTabType.pill,
+    this.swipeable = true,
   });
 
   @override
@@ -83,15 +85,19 @@ class _PolarTabBarState extends State<PolarTabBar> {
                 isDense: widget.isDense,
                 curve: widget.curve,
                 duration: widget.duration ?? const Duration(milliseconds: 300),
-                onTabChanged: (value) {
+                onTabChanged: (tabItem) {
                   setState(() {
-                    _activeIndex = value.index;
-                    _pageController.animateToPage(
-                      value.index,
-                      duration:
-                          widget.duration ?? const Duration(milliseconds: 300),
-                      curve: widget.curve,
-                    );
+                    _activeIndex = tabItem.index;
+                    if (widget.swipeable) {
+                      _pageController.jumpToPage(tabItem.index);
+                    } else {
+                      _pageController.animateToPage(
+                        tabItem.index,
+                        duration: widget.duration ??
+                            const Duration(milliseconds: 300),
+                        curve: widget.curve,
+                      );
+                    }
                   });
                 },
               )
@@ -119,23 +125,35 @@ class _PolarTabBarState extends State<PolarTabBar> {
                 isDense: widget.isDense,
                 curve: widget.curve,
                 duration: widget.duration ?? const Duration(milliseconds: 300),
-                onTabChanged: (value) {
+                onTabChanged: (tabItem) {
                   setState(() {
-                    _activeIndex = value.index;
-                    _pageController.animateToPage(
-                      value.index,
-                      duration:
-                          widget.duration ?? const Duration(milliseconds: 300),
-                      curve: widget.curve,
-                    );
+                    _activeIndex = tabItem.index;
+                    if (widget.swipeable) {
+                      _pageController.jumpToPage(tabItem.index);
+                    } else {
+                      _pageController.animateToPage(
+                        tabItem.index,
+                        duration: widget.duration ??
+                            const Duration(milliseconds: 300),
+                        curve: widget.curve,
+                      );
+                    }
                   });
                 },
               ),
         const SizedBox(height: 32),
         PolarPage(
           pageController: _pageController,
+          swipeable: widget.swipeable,
           tabs: widget.tabs,
           height: widget.height,
+          onPageSwiped: widget.swipeable
+              ? (index) {
+                  setState(() {
+                    _activeIndex = index;
+                  });
+                }
+              : null,
         ),
       ],
     );
