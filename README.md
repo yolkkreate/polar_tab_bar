@@ -15,7 +15,7 @@ Add the `polar_tab_bar` in your `pubspec.yaml`
 ```yaml
 dependencies:
   ...
-  polar_tab_bar: ^0.0.1
+  polar_tab_bar: ^0.0.2
 ```
 
 ## Basic Usage

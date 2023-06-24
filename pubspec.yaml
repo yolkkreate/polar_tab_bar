@@ -1,6 +1,6 @@
 name: polar_tab_bar
 description: A decent & customizable rounded tabbar with built-in PageView that can save UI state
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/yolkkreate/polar_tab_bar.git
 
 environment:
