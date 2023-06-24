@@ -4,9 +4,9 @@ A decent & customizable rounded tabbar with built-in PageView that can save UI s
 
 There are two types of Polar Tab Bar, the `Pill` annd the `Step`
 
-| Pill (`PolarTabType.Pill`)           | Step (`PolarTabType.Step`)   |
-| ------------------------------------ | ---------------------------- |
-| ![Pill type Gif](assets/default.gif) | ![Step Gif](assets/step.gif) |
+| Pill (`PolarTabType.Pill`)                                                                 | Step (`PolarTabType.Step`)                                                         |
+| ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
+| ![Pill type Gif](https://github.com/yolkkreate/polar_tab_bar/blob/main/assets/default.gif) | ![Step Gif](https://github.com/yolkkreate/polar_tab_bar/blob/main/assets/step.gif) |
 
 ## Get Started
 
@@ -15,7 +15,7 @@ Add the `polar_tab_bar` in your `pubspec.yaml`
 ```yaml
 dependencies:
   ...
-  polar_tab_bar:
+  polar_tab_bar: ^0.0.1
 ```
 
 ## Basic Usage
