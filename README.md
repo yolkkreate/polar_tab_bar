@@ -1,39 +1,91 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Polar Tab Bar
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+A decent & customizable rounded tabbar with built-in PageView that can save UI state.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+There are two types of Polar Tab Bar, the `Pill` annd the `Step`
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+| Pill (`PolarTabType.Pill`)           | Step (`PolarTabType.Step`)   |
+| ------------------------------------ | ---------------------------- |
+| ![Pill type Gif](assets/default.gif) | ![Step Gif](assets/step.gif) |
 
-## Features
+## Get Started
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Add the `polar_tab_bar` in your `pubspec.yaml`
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+```yaml
+dependencies:
+  ...
+  polar_tab_bar:
 ```
 
-## Additional information
+## Basic Usage
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+First create the tab items
+
+```dart
+final List<PolarTabItem> tabs = [
+      PolarTabItem(
+        index: 0,
+        title: "Home",
+        page: const PolarTabPage(
+          child: HomePage(),
+        ),
+      ),
+      PolarTabItem(
+        index: 1,
+        title: "Category",
+        page: const PolarTabPage(child: CategoryPage()),
+      ),
+      PolarTabItem(
+        index: 2,
+        title: "Profile",
+        page: const PolarTabPage(child: ProfilePage()),
+      ),
+    ];
+```
+
+Note: Wrap your child widget with `PolarTabPage` to save UI state on each navigation
+
+Then you can use `PolarTabBar` on your widget
+
+```dart
+Scaffold(
+    appBar: AppBar(
+    elevation: 0,
+    backgroundColor: Colors.indigoAccent,
+    title: const Text(
+        "Polar Tabbar",
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            ),
+        ),
+    ),
+    body: SafeArea(
+        child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: PolarTabBar(
+                type: PolarTabType.pill, // Default Type
+                tabs: tabs
+            ),
+        ),
+    ),
+)
+```
+
+## Customization
+
+- `type` (Default: `PolarTabType.pill`) - Type of tab bar
+- `pageController` (Optional) - Provide if you want full control of the internal `PageView`
+- `height` (Optional) - Provide height if you use `PolarTabBar` inside Scrolling parent (`ListView`, `SingleChildScrollView`, or else)
+- `contentSpacing` - Spacing on each tab items
+- `innerPadding` - Spacing inside tab's pill
+- `radius` - Tab item's border radius
+- `background` (Optional) - Inactive background color of tab's pill
+- `activeBackground` (Optional) - Active background color of tab's pill
+- `titleStyle` (Optional) - TextStyle of inactive title
+- `activeTitleStyle` (Optional) - TextStyle of active title
+- `isDense` () - Make the tab more compact
+- `curve` - Animation's curve
+- `duration` (Default: `300ms`) - Animation's duration
+- `swipable` (Default: `true`) - Make `PageView` swipable
